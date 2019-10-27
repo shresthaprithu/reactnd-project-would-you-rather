@@ -38,7 +38,7 @@ export class Question extends Component {
           <Grid divided padded>
             <Grid.Row>
               <Grid.Column width={4}>
-                <Image src={`/images/avatar/${avatar}`} />
+                <Image circular src={`/images/avatar/${avatar}`} />
               </Grid.Column>
               
               <Grid.Column width={12} textAlign="center">

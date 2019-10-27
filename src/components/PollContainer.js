@@ -28,7 +28,7 @@ export class PollContainer extends Component {
             <Grid.Row>
               
               <Grid.Column width={5}>
-                <Image src={`/images/avatar/${avatar}`} />
+                <Image circular src={`/images/avatar/${avatar}`} />
               </Grid.Column>
               
               <Grid.Column width={11}>

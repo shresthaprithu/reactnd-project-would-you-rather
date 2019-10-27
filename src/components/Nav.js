@@ -31,7 +31,7 @@ export class Nav extends Component {
             <Menu.Menu position="right">
               <Menu.Item>
                 <Header as='h3'>
-                  <Image src='/images/avatar/jenny.jpg' avatar centered />
+                  <Image circular src='/images/avatar/jenny.jpg' avatar centered />
                   chris
                 </Header>
               </Menu.Item>
