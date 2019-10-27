@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
+import {NavLink} from 'react-router-dom';
 import {
   Menu,
   Header,
@@ -8,52 +9,40 @@ import {
 } from 'semantic-ui-react';
 
 export class Nav extends Component {
-  state = { activeItem: 'home' };
-
-  handleItemClick = (e, { name }) => this.setState({ activeItem: name });
-
+  state = {activeItem: 'home'};
+  
+  handleItemClick = (e, {name}) => this.setState({activeItem: name});
+  
+  handleLogout = e => {
+    e.preventDefault();
+    this.props.onLogout();
+  };
+  
   render() {
-    const { activeItem } = this.state;
     return (
-      <Container>
-  
-  
-        <Menu secondary>
-          <Menu.Item
-            name="home"
-            active={activeItem === 'home'}
-            onClick={this.handleItemClick}
-          />
-          <Menu.Item
-            name="new poll"
-            active={activeItem === 'new poll'}
-            onClick={this.handleItemClick}
-          />
-          <Menu.Item
-            name="leader board"
-            active={activeItem === 'leader board'}
-            onClick={this.handleItemClick}
-          />
+        <Container>
           
+          <Menu secondary>
+            
+            <Menu.Item name="home" as={NavLink} to="/" exact />
+            <Menu.Item name="new poll" as={NavLink} to="/add" />
+            <Menu.Item name="leader board" as={NavLink} to="/leaderboard" />
+            
+            <Menu.Menu position="right">
+              <Menu.Item>
+                <Header as='h3'>
+                  <Image src='/images/avatar/jenny.jpg' avatar centered />
+                  chris
+                </Header>
+              </Menu.Item>
+              
+              <Menu.Item>
+                <Button content="Logout" labelPosition="right" onClick={this.handleLogout} />
+              </Menu.Item>
+            </Menu.Menu>
           
-          <Menu.Menu position="right">
-            <Menu.Item>
-              <Header as='h3'>
-                <Image src='images/avatar/jenny.jpg' avatar centered />
-                chris
-              </Header>
-            </Menu.Item>
-            <Menu.Item>
-              <Button
-                content="Logout"
-                labelPosition="right"
-              />
-            </Menu.Item>
-          </Menu.Menu>
-          
-          
-        </Menu>
-      </Container>
+          </Menu>
+        </Container>
     );
   }
 }
