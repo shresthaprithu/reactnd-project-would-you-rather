@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {NavLink} from 'react-router-dom';
+import {connect} from 'react-redux';
 import {
   Menu,
   Header,
@@ -7,18 +8,17 @@ import {
   Button,
   Container
 } from 'semantic-ui-react';
+import {setAuthUser} from '../actions/authUser';
 
 export class Nav extends Component {
-  state = {activeItem: 'home'};
-  
-  handleItemClick = (e, {name}) => this.setState({activeItem: name});
   
   handleLogout = e => {
     e.preventDefault();
-    this.props.onLogout();
+    this.props.setAuthUser(null);
   };
   
   render() {
+    const {authUser, users} = this.props;
     return (
         <Container>
           
@@ -31,8 +31,8 @@ export class Nav extends Component {
             <Menu.Menu position="right">
               <Menu.Item>
                 <Header as='h3'>
-                  <Image circular src='/images/avatar/jenny.jpg' avatar centered />
-                  chris
+                  <Image circular src={users[authUser].avatarURL} avatar centered />
+                  {users[authUser].name}
                 </Header>
               </Menu.Item>
               
@@ -47,4 +47,14 @@ export class Nav extends Component {
   }
 }
 
-export default Nav;
+function mapStateToProps({users, authUser}) {
+  return {
+    authUser,
+    users
+  };
+}
+
+export default connect(
+    mapStateToProps,
+    {setAuthUser}
+)(Nav);
