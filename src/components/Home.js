@@ -1,99 +1,73 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import { Tab } from 'semantic-ui-react';
-import { Question } from './Question';
+import {connect} from 'react-redux';
+import {Tab} from 'semantic-ui-react';
+import UserCard from './UserCard';
+import PollTeaser from './PollTeaser';
 
-// sample data
-const userQuestionData = {
-  unanswered: [
+const panes = props => {
+  const {userQuestionData} = props;
+  return [
     {
-      qid: 1,
-      author: 'Christian',
-      avatar: 'christian.jpg',
-      question: 'Option 1'
+      menuItem: 'Unanswered',
+      render: () => (
+          <Tab.Pane>
+            {userQuestionData.answered.map(question => (
+                <UserCard key={question.id} userId={question.author}>
+                  <PollTeaser question={question} unanswered={true} />
+                </UserCard>
+            ))}
+          </Tab.Pane>
+      )
     },
     {
-      qid: 2,
-      author: 'Daniel',
-      avatar: 'daniel.jpg',
-      question: 'Option 1'
-    },
-    {
-      qid: 3,
-      author: 'Elliot',
-      avatar: 'elliot.jpg',
-      question: 'Option 1'
+      menuItem: 'Answered',
+      render: () => (
+          <Tab.Pane>
+            {userQuestionData.unanswered.map(question => (
+                <UserCard key={question.id} userId={question.author}>
+                  <PollTeaser question={question} unanswered={false} />
+                </UserCard>
+            ))}
+          </Tab.Pane>
+      )
     }
-  ],
-  answered: [
-    {
-      qid: 4,
-      author: 'Elyse',
-      avatar: 'elyse.png',
-      question: 'Option 1'
-    },
-    {
-      qid: 5,
-      author: 'Helen',
-      avatar: 'helen.jpg',
-      question: 'Option 1'
-    },
-    {
-      qid: 6,
-      author: 'Jenny',
-      avatar: 'jenny.jpg',
-      question: 'Option 1'
-    }
-  ]
+  ];
 };
 
-const panes = props => [
-  {
-    menuItem: 'Unanswered',
-    render: () => (
-        <Tab.Pane>
-          {userQuestionData.unanswered.map(question => (
-              <Question
-                  key={question.qid}
-                  {...question}
-                  unanswered={true}
-                  {...props}
-              />
-          ))}
-        </Tab.Pane>
-    )
-  },
-  {
-    menuItem: 'Answered',
-    render: () => (
-        <Tab.Pane>
-          {userQuestionData.answered.map(question => (
-              <Question
-                  key={question.qid}
-                  {...question}
-                  unanswered={false}
-                  {...props}
-              />
-          ))}
-        </Tab.Pane>
-    )
-  }
-];
-
 export class Home extends Component {
-  render() {
-    return <TabControl onSetResult={this.props.onSetResult} />;
-  }
-  
   static propTypes = {
-    onSetResult: PropTypes.func.isRequired
+    // unansweredQuestions: PropTypes.array.isRequired,
+    // answeredQuestions: PropTypes.array.isRequired
+    userQuestionData: PropTypes.object.isRequired
+  };
+  
+  render() {
+    const {userQuestionData} = this.props;
+    // console.log('this.props.unansweredQuestions', this.props.unansweredQuestions);
+    // console.log('this.props.answeredQuestions', this.props.answeredQuestions);
+    return <Tab panes={panes({userQuestionData})} className="tab" />;
+  }
+}
+
+function mapStateToProps({authUser, users, questions}) {
+  const answeredIds = Object.keys(users[authUser].answers);
+  const answered = Object.values(questions)
+      .filter(question => answeredIds.includes(question.id))
+      .sort((a, b) => b.timestamp - a.timestamp);
+  const unanswered = Object.values(questions)
+      .filter(question => !answeredIds.includes(question.id))
+      .sort((a, b) => b.timestamp - a.timestamp);
+  // console.log('answeredIds', answeredIds);
+  // console.log('answeredQuestions', answeredQuestions);
+  // console.log('unansweredQuestions', unansweredQuestions);
+  
+  return {
+    userQuestionData: {
+      answered,
+      unanswered
+    }
   };
 }
 
-class TabControl extends Component {
-  render() {
-    return <Tab panes={panes(this.props)} className="tab" />;
-  }
-}
-
-export default Home;
+export default connect(mapStateToProps)(Home);
