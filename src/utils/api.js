@@ -19,6 +19,7 @@ export function saveQuestion(info) {
   return _saveQuestion(info);
 }
 
-export function saveQuestionAnswer(info) {
-  return _saveQuestionAnswer(info);
+export function saveQuestionAnswer(authUser, qid, answer) {
+  // console.log('info', { authUser, qid, answer });
+  return _saveQuestionAnswer({ authUser, qid, answer });
 }
