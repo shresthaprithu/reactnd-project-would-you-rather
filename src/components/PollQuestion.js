@@ -1,5 +1,8 @@
 import React, {Component, Fragment} from 'react';
+import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
 import {Header, Button, Form, Radio} from 'semantic-ui-react';
+import {handleSaveQuestionAnswer} from '../actions/users';
 
 export class PollQuestion extends Component {
   state = {
@@ -7,41 +10,50 @@ export class PollQuestion extends Component {
   };
   
   handleChange = (e, {value}) => this.setState({value});
-  
   handleSubmit = e => {
     e.preventDefault();
     if (this.state.value !== '') {
-      this.props.onSubmit(this.state.value);
+      const {authUser, question, handleSaveQuestionAnswer} = this.props;
+      handleSaveQuestionAnswer(authUser, question.id, this.state.value);
     }
   };
   
   render() {
-    const {optionOne, optionTwo} = this.props;
+    const {question} = this.props;
     const disabled = this.state.value === '' ? true : false;
-    
-    
-    console.log('this.state.value', this.state.value)
     
     return (
         <Fragment>
           <Header as="h4">Would you rather</Header>
-          
           <Form onSubmit={this.handleSubmit}>
             <Form.Field>
-              <Radio label={optionOne.text} name="radioGroup" value="opt1" checked={this.state.value === 'opt1'}
-                     onChange={this.handleChange} />
+              <Radio label={question.optionOne.text} name="radioGroup" value="optionOne"
+                     checked={this.state.value === 'optionOne'} onChange={this.handleChange} />
               <br />
-              <Radio label={optionTwo.text} name="radioGroup" value="opt2" checked={this.state.value === 'opt2'}
-                     onChange={this.handleChange} />
+              <Radio label={question.optionTwo.text} name="radioGroup" value="optionTwo"
+                     checked={this.state.value === 'optionTwo'} onChange={this.handleChange} />
             </Form.Field>
-            
             <Form.Field>
-              <Button fluid disabled={disabled} content="Submit" />
+              <Button color="green" size="tiny" fluid positive disabled={disabled} content="Submit" />
             </Form.Field>
           </Form>
         </Fragment>
     );
   }
+  static propTypes = {
+    authUser: PropTypes.string.isRequired,
+    handleSaveQuestionAnswer: PropTypes.func.isRequired,
+    question: PropTypes.object.isRequired
+  };
 }
 
-export default PollQuestion;
+function mapStateToProps({authUser}, {match}) {
+  return {
+    authUser
+  };
+}
+
+export default connect(
+    mapStateToProps,
+    {handleSaveQuestionAnswer}
+)(PollQuestion);
