@@ -193,7 +193,7 @@ function formatQuestion({optionOneText, optionTwoText, author}) {
 
 export function _saveQuestion(question) {
   return new Promise((res, rej) => {
-    const authedUser = question.author;
+    const authUser = question.author;
     const formattedQuestion = formatQuestion(question);
     
     setTimeout(() => {
@@ -204,9 +204,9 @@ export function _saveQuestion(question) {
       
       users = {
         ...users,
-        [authedUser]: {
-          ...users[authedUser],
-          questions: users[authedUser].questions.concat([formattedQuestion.id])
+        [authUser]: {
+          ...users[authUser],
+          questions: users[authUser].questions.concat([formattedQuestion.id])
         }
       };
       

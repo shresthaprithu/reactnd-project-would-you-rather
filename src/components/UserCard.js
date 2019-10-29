@@ -40,7 +40,7 @@ export class UserCard extends Component {
           <Grid divided padded>
             <Grid.Row>
               <Grid.Column width={5}>
-                <Image src={author.avatarURL} />
+                <Image circular src={author.avatarURL} />
               </Grid.Column>
               <Grid.Column width={11}>
                 <PollContent pollType={pollType} question={question} unanswered={unanswered} />

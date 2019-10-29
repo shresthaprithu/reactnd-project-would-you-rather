@@ -27,7 +27,7 @@ class Nav extends Component {
             <Menu.Menu position="right">
               <Menu.Item>
               <span>
-                <Image src={users[authUser].avatarURL} avatar spaced="right" verticalAlign="middle" />
+                <Image circular src={users[authUser].avatarURL} avatar spaced="right" verticalAlign="middle" />
                 {users[authUser].name}
               </span>
               </Menu.Item>

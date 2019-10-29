@@ -14,19 +14,19 @@ import {
 import { handleSaveQuestion } from '../actions/questions';
 
 export class NewPoll extends Component {
-  static propTypes = {
-    authUser: PropTypes.string.isRequired,
-    handleSaveQuestion: PropTypes.func.isRequired
-  };
+
   state = {
     validSubmit: false,
     isLoading: false,
     option1: '',
     option2: ''
   };
+  
   handleChange = e => {
+    // console.log(e.target.id);
     this.setState({ [e.target.id]: e.target.value });
   };
+  
   handleSubmit = e => {
     e.preventDefault();
     const { authUser, handleSaveQuestion } = this.props;
@@ -46,13 +46,14 @@ export class NewPoll extends Component {
       this.setState({ validSubmit: true });
     });
   };
+  
   render() {
-    console.log('this.props', this.props);
     const disabled = this.state.option1 === '' || this.state.option2 === '';
     
     if (this.state.validSubmit === true) {
       return <Redirect to="/" />;
     }
+    
     return (
         <Segment.Group>
           <Header as="h3" textAlign="left" block attached="top">
@@ -94,6 +95,11 @@ export class NewPoll extends Component {
         </Segment.Group>
     );
   }
+  
+  static propTypes = {
+    authUser: PropTypes.string.isRequired,
+    handleSaveQuestion: PropTypes.func.isRequired
+  };
 }
 
 function mapStateToProps({ authUser }) {
