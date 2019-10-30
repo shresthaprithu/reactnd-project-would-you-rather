@@ -77,11 +77,11 @@ let questions = {
     timestamp: 1467166872634,
     optionOne: {
       votes: ['ade'],
-      text: 'Opt1'
+      text: 'eat your favorite meal for every meal for the rest of your life'
     },
     optionTwo: {
       votes: [],
-      text: 'Opt2'
+      text: 'never be able to eat your favorite meal again'
     }
   },
   '6ni6ok3ym7mf1p33lnez': {
@@ -90,11 +90,11 @@ let questions = {
     timestamp: 1468479767190,
     optionOne: {
       votes: [],
-      text: 'Opt1'
+      text: 'live in a place where it is always hot'
     },
     optionTwo: {
       votes: ['christian', 'ade'],
-      text: 'Opt2'
+      text: 'always cold'
     }
   },
   am8ehyc8byjqgar0jgpub9: {
@@ -103,11 +103,11 @@ let questions = {
     timestamp: 1488579767190,
     optionOne: {
       votes: [],
-      text: 'Opt1'
+      text: 'be poor with lots of good friends'
     },
     optionTwo: {
       votes: ['ade'],
-      text: 'Opt2'
+      text: 'rich with no friends'
     }
   },
   loxhs1bqm25b708cmbf3g: {
@@ -116,11 +116,11 @@ let questions = {
     timestamp: 1482579767190,
     optionOne: {
       votes: [],
-      text: 'Opt1'
+      text: 'only be able to jump everywhere you go'
     },
     optionTwo: {
       votes: ['ade'],
-      text: 'Opt2'
+      text: 'only be able to walk on your hands'
     }
   },
   vthrdm985a262al8qx3do: {
@@ -129,11 +129,11 @@ let questions = {
     timestamp: 1489579767190,
     optionOne: {
       votes: ['chris'],
-      text: 'Opt1'
+      text: 'control space'
     },
     optionTwo: {
       votes: ['christian'],
-      text: 'Opt2'
+      text: 'time'
     }
   },
   xj352vofupe1dqz9emx13r: {
@@ -142,11 +142,11 @@ let questions = {
     timestamp: 1493579767190,
     optionOne: {
       votes: ['christian'],
-      text: 'Opt1'
+      text: 'wear clown shoes every day'
     },
     optionTwo: {
       votes: ['chris'],
-      text: 'Opt2'
+      text: 'a clown wig every day'
     }
   }
 };
