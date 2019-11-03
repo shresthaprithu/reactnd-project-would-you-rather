@@ -36,10 +36,11 @@ export class PollTeaser extends Component {
       </Fragment>
     );
   }
-  static propTypes = {
-    question: PropTypes.object.isRequired,
-    unanswered: PropTypes.bool.isRequired
-  };
 }
+
+PollTeaser.propTypes = {
+  question: PropTypes.object.isRequired,
+  unanswered: PropTypes.bool.isRequired
+};
 
 export default PollTeaser;

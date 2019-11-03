@@ -85,11 +85,12 @@ export class NewPoll extends Component {
       </Segment.Group>
     );
   }
-  static propTypes = {
-    authUser: PropTypes.string.isRequired,
-    handleSaveQuestion: PropTypes.func.isRequired
-  };
 }
+
+NewPoll.propTypes = {
+  authUser: PropTypes.string.isRequired,
+  handleSaveQuestion: PropTypes.func.isRequired
+};
 
 function mapStateToProps({authUser}) {
   return {

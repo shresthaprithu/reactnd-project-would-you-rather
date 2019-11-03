@@ -64,9 +64,6 @@ const BannerImage = () => (
 );
 
 class LoginForm extends Component {
-  static propTypes = {
-    onLoading: PropTypes.func.isRequired
-  };
   state = {
     value: ''
   };
@@ -108,6 +105,10 @@ class LoginForm extends Component {
     );
   }
 }
+
+Login.propTypes = {
+  onLoading: PropTypes.func.isRequired
+};
 
 const ConnectedLoginForm = connect(
     mapStateToProps,

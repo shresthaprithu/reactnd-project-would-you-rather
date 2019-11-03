@@ -62,15 +62,16 @@ export class UserCard extends Component {
       </Segment.Group>
     );
   }
-  
-  static propTypes = {
-    question: PropTypes.object,
-    author: PropTypes.object,
-    pollType: PropTypes.string,
-    unanswered: PropTypes.bool,
-    question_id: PropTypes.string
-  };
 }
+
+
+UserCard.propTypes = {
+  question: PropTypes.object,
+  author: PropTypes.object,
+  pollType: PropTypes.string,
+  unanswered: PropTypes.bool,
+  question_id: PropTypes.string
+};
 
 function mapStateToProps(
     { users, questions, authUser },

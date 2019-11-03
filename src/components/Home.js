@@ -50,9 +50,6 @@ export class Home extends Component {
     return <Tab panes={panes({userQuestionData})}
                 className="tab" />;
   }
-  static propTypes = {
-    userQuestionData: PropTypes.object.isRequired
-  };
 }
 
 function mapStateToProps({authUser, users, questions}) {
@@ -71,5 +68,9 @@ function mapStateToProps({authUser, users, questions}) {
     }
   };
 }
+
+Home.propTypes = {
+  userQuestionData: PropTypes.object.isRequired
+};
 
 export default connect(mapStateToProps)(Home);

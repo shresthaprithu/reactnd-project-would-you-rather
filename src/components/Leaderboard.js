@@ -57,9 +57,6 @@ export class Leaderboard extends Component {
       </Fragment>
     );
   }
-  static propType = {
-    leaderboardData: PropType.array.isRequired
-  };
 }
 
 function mapStateToProps({users}) {
@@ -79,5 +76,9 @@ function mapStateToProps({users}) {
     leaderboardData
   };
 }
+
+Leaderboard.propType = {
+  leaderboardData: PropType.array.isRequired
+};
 
 export default connect(mapStateToProps)(Leaderboard);

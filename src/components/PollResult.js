@@ -65,12 +65,13 @@ export class PollResult extends Component {
       </Fragment>
     );
   }
-  static propTypes = {
-    history: PropTypes.object.isRequired,
-    question: PropTypes.object.isRequired,
-    user: PropTypes.object.isRequired
-  };
 }
+
+PollResult.propTypes = {
+  history: PropTypes.object.isRequired,
+  question: PropTypes.object.isRequired,
+  user: PropTypes.object.isRequired
+};
 
 function mapStateToProps({users, authUser}) {
   const user = users[authUser];

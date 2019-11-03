@@ -9,11 +9,6 @@ import {
 import {handleSaveQuestionAnswer} from '../actions/users';
 
 export class PollQuestion extends Component {
-  static propTypes = {
-    authUser: PropTypes.string.isRequired,
-    handleSaveQuestionAnswer: PropTypes.func.isRequired,
-    question: PropTypes.object.isRequired
-  };
   state = {
     value: ''
   };
@@ -65,6 +60,12 @@ export class PollQuestion extends Component {
     );
   }
 }
+
+PollQuestion.propTypes = {
+  authUser: PropTypes.string.isRequired,
+  handleSaveQuestionAnswer: PropTypes.func.isRequired,
+  question: PropTypes.object.isRequired
+};
 
 function mapStateToProps({authUser}, {match}) {
   return {
