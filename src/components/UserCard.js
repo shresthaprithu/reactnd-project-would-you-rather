@@ -19,7 +19,8 @@ const PollContent = props => {
   
   switch (pollType) {
     case pollTypes.POLL_TEASER:
-      return <PollTeaser question={question} unanswered={unanswered} />;
+      return <PollTeaser question={question}
+                         unanswered={unanswered} />;
     case pollTypes.POLL_QUESTION:
       return <PollQuestion question={question} />;
     case pollTypes.POLL_RESULT:
@@ -43,24 +44,22 @@ export class UserCard extends Component {
       return <Redirect to="/questions/no_match" component={NoMatch}/>;
     }
     
-    
     return (
-        <Segment.Group>
-          <Header as="h5" textAlign="left" block attached="top">
-            {author.name} asks:
-          </Header>
-          
-          <Grid divided padded>
-            <Grid.Row>
-              <Grid.Column width={5}>
-                <Image circular src={author.avatarURL} />
-              </Grid.Column>
-              <Grid.Column width={11}>
-                <PollContent pollType={pollType} question={question} unanswered={unanswered} />
-              </Grid.Column>
-            </Grid.Row>
-          </Grid>
-        </Segment.Group>
+      <Segment.Group>
+        <Header as="h5" textAlign="left" block attached="top">
+          {author.name} asks:
+        </Header>
+        <Grid divided padded>
+          <Grid.Row>
+            <Grid.Column width={5}>
+              <Image circular src={author.avatarURL} />
+            </Grid.Column>
+            <Grid.Column width={11}>
+              <PollContent pollType={pollType} question={question} unanswered={unanswered} />
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
+      </Segment.Group>
     );
   }
   
@@ -89,7 +88,6 @@ function mapStateToProps(
     const { question_id } = match.params;
     question = questions[question_id];
     const user = users[authUser];
-    
     if (question === undefined) {
       noMatchUrl = true;
     } else {

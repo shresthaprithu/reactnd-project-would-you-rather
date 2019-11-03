@@ -16,27 +16,29 @@ class Nav extends Component {
   };
   
   render() {
-    const {authUser, users} = this.props;
+    const {
+      authUser,
+      users} = this.props;
     
     return (
-        <Container>
-          <Menu secondary>
-            <Menu.Item name="home" as={NavLink} to="/" exact />
-            <Menu.Item name="new poll" as={NavLink} to="/add" />
-            <Menu.Item name="leader board" as={NavLink} to="/leaderboard" />
-            <Menu.Menu position="right">
-              <Menu.Item>
-              <span>
-                <Image circular src={users[authUser].avatarURL} avatar spaced="right" verticalAlign="middle" />
-                {users[authUser].name}
-              </span>
-              </Menu.Item>
-              <Menu.Item>
-                <Button content="Logout" labelPosition="right" onClick={this.handleLogout} />
-              </Menu.Item>
-            </Menu.Menu>
-          </Menu>
-        </Container>
+      <Container>
+        <Menu secondary>
+          <Menu.Item name="home" as={NavLink} to="/" exact />
+          <Menu.Item name="new poll" as={NavLink} to="/add" />
+          <Menu.Item name="leader board" as={NavLink} to="/leaderboard" />
+          <Menu.Menu position="right">
+            <Menu.Item>
+            <span>
+              <Image circular src={users[authUser].avatarURL} avatar spaced="right" verticalAlign="middle" />
+              {users[authUser].name}
+            </span>
+            </Menu.Item>
+            <Menu.Item>
+              <Button content="Logout" labelPosition="right" onClick={this.handleLogout} />
+            </Menu.Item>
+          </Menu.Menu>
+        </Menu>
+      </Container>
     );
   }
 }

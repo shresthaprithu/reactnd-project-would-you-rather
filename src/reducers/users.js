@@ -12,8 +12,10 @@ export default function users(state = {}, action) {
         ...action.users
       };
     case ADD_ANSWER_TO_USER:
-      const { authUser, qid, answer } = action;
-      
+      const {
+        authUser,
+        qid,
+        answer } = action;
       return {
         ...state,
         [authUser]: {
@@ -25,8 +27,9 @@ export default function users(state = {}, action) {
         }
       };
     case ADD_QUESTION_TO_USER:
-      const { id, author } = action;
-      
+      const {
+        id,
+        author} = action;
       return {
         ...state,
         [author]: {

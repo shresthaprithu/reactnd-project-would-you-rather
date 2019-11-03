@@ -1,4 +1,3 @@
-// api.js
 import {
   _getUsers,
   _getQuestions,
@@ -20,6 +19,5 @@ export function saveQuestion(info) {
 }
 
 export function saveQuestionAnswer(authUser, qid, answer) {
-  // console.log('info', { authUser, qid, answer });
   return _saveQuestionAnswer({ authUser, qid, answer });
 }
