@@ -25,12 +25,6 @@ const YourVoteLabel = () => (
 );
 
 export class PollResult extends Component {
-  static propTypes = {
-    history: PropTypes.object.isRequired,
-    question: PropTypes.object.isRequired,
-    user: PropTypes.object.isRequired
-  };
-  
   handleClick = () => {
     this.props.history.push('/');
   };
@@ -59,7 +53,6 @@ export class PollResult extends Component {
         </Segment>
         <Segment>
           {userVote === 'optionTwo' && <YourVoteLabel />}
-          
           <p style={{fontWeight: 'bold'}}>{question.optionTwo.text}</p>
           <Progress percent={((optionTwoVotes / votesTotal) * 100).toFixed(2)} progress>
             {optionTwoVotes} out of {votesTotal} votes
@@ -72,6 +65,11 @@ export class PollResult extends Component {
       </Fragment>
     );
   }
+  static propTypes = {
+    history: PropTypes.object.isRequired,
+    question: PropTypes.object.isRequired,
+    user: PropTypes.object.isRequired
+  };
 }
 
 function mapStateToProps({users, authUser}) {
