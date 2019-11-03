@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
+import { Container, Header } from 'semantic-ui-react';
 
 export class NoMatch extends Component {
   render() {
     return (
-        <div>
-          <h3>No Match 404</h3>
-        </div>
+        <Container textAlign="center">
+          <Header as="h3">No match error</Header>
+          <p>The question you searched could not be found. Please try again.</p>
+        </Container>
     );
   }
 }
