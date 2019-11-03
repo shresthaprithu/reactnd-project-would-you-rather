@@ -1,68 +1,106 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Would you rather
 
-## Available Scripts
+Would you rather is a simple choice game created using React and Redux. In this game you can choose one of the
+two options given to you and view the results of how many other users have answered any one of the two options. There is also an option for user to create their own poll.
+A leaderboard is available to view, created based on answered and created questions.
 
-In the project directory, you can run:
 
-### `npm start`
+### Prerequisites
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+To start you need to have node package manager installed in your system.
+The packages used in this application is set in package.json.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+To install npm you can run following command in your terminal.
 
-### `npm test`
+```
+npm install npm@latest -g
+```
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Installing
+The application was created with **create-react-app** and requires only few steps to get started.
 
-### `npm run build`
+Besides default packages from create-react-app, the only additional packages installed are,
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. prop-types
+2. react
+3. react-dom
+4. react-redux
+5. react-router-dom
+6. react-scripts
+7. redux
+8. redux-thunk
+9. semantic-ui-css
+10. semantic-ui-react
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The application can easily be set and running through following commands
 
-### `npm run eject`
+```
+npm install
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+And,
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```
+npm start
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+After you start the project you should see the sign in page as shown in the screen below,
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+![sign in page](./screens/1_signin.png)
 
-## Learn More
+Some of the other available functions are captured in the following screens below,
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### User lists
+The application is provided with a set of users.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+![sign in page with users list](./screens/1_signin_users.jpg)
 
-### Code Splitting
+-------------
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+### Unanswered questions tab
+All unanswered questions by user is set on this tab.
 
-### Analyzing the Bundle Size
+![Unanswered questions tab](./screens/2_unanswered.jpg)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+-------------
 
-### Making a Progressive Web App
+### Answered questions tab
+All answered questions by user is set on this tab. If no questions are answered, it will show a message as shown.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+![Answered questions tab](./screens/3_answered.jpg)
 
-### Advanced Configuration
+-------------
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+### Answer poll
+This is the screen that users gets after selecting a poll to answer.
 
-### Deployment
+![Answer poll](./screens/4_answer_poll.jpg)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+-------------
 
-### `npm run build` fails to minify
+### Results
+The results of the poll is shown in this screen indicating how many users have voted in this particular
+poll and how many of them have chosen specific option including yours, marked with a label.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+![Results](./screens/5_results.jpg)
+
+-------------
+
+### New Poll
+User can also create a new poll.
+
+![New Poll](./screens/6_new_poll.jpg)
+
+-------------
+
+### Leaderboard
+A leaderboard displays top 3 of the users who have highest number of questions answered and created.
+
+![Leaderboard](./screens/7_leaderboard.jpg)
+
+-------------
+
+## Author
+
+Prithu Shrestha
