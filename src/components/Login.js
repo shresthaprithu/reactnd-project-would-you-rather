@@ -106,7 +106,7 @@ class LoginForm extends Component {
   }
 }
 
-Login.propTypes = {
+LoginForm.propTypes = {
   onLoading: PropTypes.func.isRequired
 };
 
