@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {Tab} from 'semantic-ui-react';
+import {
+  Tab,
+  Message} from 'semantic-ui-react';
 import UserCard from './UserCard';
 
 const panes = props => {
@@ -11,6 +13,10 @@ const panes = props => {
       menuItem: 'Unanswered',
       render: () => (
         <Tab.Pane>
+          {userQuestionData.answered.length === 0
+              ? <Message color='green'>Congratulations! You have answered all the questions!</Message>
+              : null
+          }
           {userQuestionData.answered.map(question => (
             <UserCard key={question.id}
                       question_id={question.id}
@@ -23,6 +29,10 @@ const panes = props => {
       menuItem: 'Answered',
       render: () => (
         <Tab.Pane>
+          {userQuestionData.unanswered.length === 0
+              ? <Message color='orange'>You have not answered any questions yet.<br />Please go to 'Unanswered' Tab and answer some would you rather questions.</Message>
+              : null
+          }
           {userQuestionData.unanswered.map(question => (
             <UserCard key={question.id}
                       question_id={question.id}
